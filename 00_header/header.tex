@@ -1,0 +1,257 @@
+%!TEX root = ../ZF_NAME_lukwidmer.tex
+% \documentclass[8pt, a4paper, landscape, xcolor=dvipsnames]{extarticle}
+\documentclass[8pt, a4paper, landscape]{extarticle}
+
+%packages
+
+\usepackage[utf8]{inputenc}
+\usepackage[top=0.7cm, bottom=0.9cm, left=0.65 cm, right=0.65 cm, ]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{bm}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[ngerman]{babel}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage[normalem]{ulem}
+\usepackage{lipsum}
+\usepackage{microtype}
+\usepackage{hyphenat}
+\usepackage{titlesec}
+\usepackage[breakable]{tcolorbox}
+\usepackage{esvect}
+\usepackage{enumitem}
+\usepackage{multirow, makecell}
+\usepackage{wallpaper}
+\setlength{\parindent}{0pt}
+\usepackage{changepage}
+\usepackage{hyperref}
+\usepackage{circuitikz}
+\usepackage{mathtools}
+\usetikzlibrary{positioning}
+\usepackage{graphbox}
+\usepackage{mleftright}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{longtable}
+%\usepackage{xtab,booktabs}
+\usepackage{supertabular,booktabs}
+\usepackage{dblfloatfix}
+\usepackage{xstring}
+\usepackage{cancel}
+
+
+
+%font
+\renewcommand{\familydefault}{\sfdefault}
+
+%titles
+%subsection
+\titleformat{\subsection}
+[block]{\normalsize}{\thesubsection}{1em}{}[{\titlerule[0.8pt]}]
+
+%section
+\titlespacing{\section}{0pt}{*1}{-3pt}
+
+%Column Settings
+\setlength\columnsep{3mm}
+\setlength{\columnseprule}{0pt}
+
+%new/renew commands
+
+%Roman upper case
+\newcommand{\Romannumeral}[1]
+{\MakeUppercase{\romannumeral #1}}
+
+%differential fraction
+\newcommand{\diff}[2]{
+	\frac{\mathrm{d}#1}{\mathrm{d}#2}
+}
+
+%partial differential fraction
+\newcommand{\partialdiff}[2]{
+	\frac{\partial#1}{\partial#2}
+}
+
+%Example
+\newcommand{\example}[1]{
+	\color{gray}\scriptsize#1\small\color{black}
+}
+
+%Documentinfo
+\newcommand{\DocumentInfo}[3]{
+	\begin{tcolorbox}[
+			arc=0mm,
+			colback = brown!38!white,
+			colframe = brown!50!white,
+			boxrule=0pt,
+			toptitle=1mm,
+			bottomtitle=1mm,
+			right=2mm,
+			left=2mm,
+			leftright skip = -0.5mm,
+			title= \huge \center \textbf{#1} \par \large \vskip1mm #2 \par \vskip1mm 					\small 	Version: \today,
+			colupper=black,
+			coltitle=black,
+			after skip = 0 mm,
+			top=0.1mm,
+			bottom=1mm]
+
+		\small #3
+		\vskip1mm
+	\end{tcolorbox}
+	\WhiteSpace
+}
+
+% Section
+\newcommand{\mySection}[2][brown!38!white]{
+	\begin{tcolorbox}[
+			arc=0mm,
+			colback=#1,
+			coltitle=black,
+			colframe=black,
+			bottomrule = 0 mm,
+			toprule = 0 mm,
+			leftrule = 0 mm,
+			rightrule = 0 mm,
+			valign=center,
+			left=0.5mm,
+			top= 0.7 mm,
+			bottom= 0.7 mm,
+			before skip = 0mm,
+			leftright skip = -0.5mm,
+			after skip = 0 mm]
+
+		\section{#2}
+	\end{tcolorbox}
+	\WhiteSpace
+	\small
+}
+
+% Subsection
+% \mySubsection[*][][][]
+% - color of box (if only 3 arguments given: brown!38!white)
+% \mySubsection[][*][][]
+% - subsection title
+% \mySubsection [][][*][]
+% - [0] : no Whitspace before or after main body
+% - [1] : WhiteSpace before but not after main body
+% - [2] : no WhiteSpace before but WhiteSpace after main body
+% - [3]: WhiteSpace before and after main body
+% \mySubsectino[][][][*]
+% - main body
+% Example: \myWhiteSpace{title}{3}{main body}
+\newcommand{\mySubsection}
+[4][brown!38!white]{
+	\begin{tcolorbox}[
+			arc=0mm,
+			colback=#1,
+			colframe=white,
+			bottomrule = 0 mm,
+			toprule = 0 mm,
+			leftrule = 0 mm,
+			rightrule = 0 mm,
+			valign=center,
+			left=0.5mm,
+			top=0mm,
+			bottom=0mm,
+			before skip = 0mm,
+			leftright skip = -0.5mm,
+			after skip = 0mm]
+
+		\small \subsection{#2}
+	\end{tcolorbox}
+	\IfEqCase{#3}{{0}{}{1}{\WhiteSpace}{2}{}{3}{\WhiteSpace}}[\PackageError{tree}{Undefined option to tree: #1}{}]%
+	\begin{adjustwidth}{0.5mm}{1mm}
+		\small
+		\vspace{0.5mm}
+		#4
+		\vspace{0.5mm}
+	\end{adjustwidth}
+	\IfEqCase{#3}{{0}{}{1}{}{2}{\WhiteSpace}{3}{\WhiteSpace}}[\PackageError{tree}{Undefined option to tree: #1}{}]%
+}
+
+\newcommand{\phantomSubsection}
+[2][brown!38!white]{
+	\begin{tcolorbox}[
+			arc=0mm,
+			colback=#1,
+			colframe=white,
+			bottomrule = 0 mm,
+			toprule = 0 mm,
+			leftrule = 0 mm,
+			rightrule = 0 mm,
+			valign=center,
+			left=0.5mm,
+			top=0mm,
+			bottom=0mm,
+			before skip = 0mm,
+			leftright skip = -0.5mm,
+			after skip = 0mm]
+		\small \subsection{#2}
+	\end{tcolorbox}
+	\WhiteSpace
+}
+
+%unit
+% eg: \unit[_]{kJ}
+%[0] or empty : simple \mathrm : <something>kJ
+%[1]: spacing : <something> kJ
+%[2]: brackets : <something>[kJ]
+\newcommand{\unit}
+[2][0]{
+\IfEqCase{#1}{{0}{}{1}{\hspace{1mm}}{2}{ \left[ }}[\PackageError{tree}{Undefined option to tree: #1}{}]%
+\mathrm{#2}%
+\IfEqCase{#1}{{0}{}{1}{}{2}{ \right] }}[\PackageError{tree}{Undefined option to tree: #1}{}]%
+}
+
+%myBox
+\newcommand{\myBox}[1]{
+	\begin{tcolorbox}[
+			arc=1mm,
+			colframe = black,
+			boxrule=0.5pt,
+			colback=white]
+		#1
+
+	\end{tcolorbox}
+}
+
+%myCenter
+\newenvironment{myCenter}[1][\topsep]
+{\setlength{\topsep}{#1}\par\kern\topsep\centering}% \begin{mycenter}[<len>]
+{\par\kern\topsep}%
+
+%Whitespace between Sections
+\newcommand{\WhiteSpace}[0]{
+	\begin{tcolorbox}[
+			arc=0mm,
+			colback=white,
+			colframe=white,
+			bottomrule = 0 mm,
+			toprule = 0 mm,
+			leftrule = 0 mm,
+			rightrule = 0 mm,
+			valign=center,
+			left=0.5mm,
+			top= -0.2 mm,
+			bottom= -0.2 mm,
+			fontupper=\color{white},
+			before skip = 0mm,
+			leftright skip = -0.5mm,
+			after skip = 0 mm]
+
+	\end{tcolorbox}
+}
+
+%Background
+\CenterWallPaper{1}{00_header/background.pdf}
+
+%circled enumerate items
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+%Checkmarks
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
