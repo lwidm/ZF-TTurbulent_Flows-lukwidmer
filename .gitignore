@@ -4,6 +4,7 @@
 *.log
 *.out
 *.gz
+*.pdf
 
 00_header/*.aux
 00_header/*.fdb_latexmk
@@ -11,6 +12,7 @@
 00_header/*.log
 00_header/*.out
 00_header/*.gz
+00_header/*.pdf
 
 01_assets/*.aux
 01_assets/*.fdb_latexmk
@@ -18,6 +20,7 @@
 01_assets/*.log
 01_assets/*.out
 01_assets/*.gz
+01_assets/*.pdf
 
 02_chapters/*.aux
 02_chapters/*.fdb_latexmk
@@ -25,3 +28,4 @@
 02_chapters/*.log
 02_chapters/*.out
 02_chapters/*.gz
+02_chapters/*.pdf
