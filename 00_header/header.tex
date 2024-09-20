@@ -1,4 +1,4 @@
-%!TEX root = ../ZF_NAME_lukwidmer.tex
+%!TEX root = ../ZF-LECTURE_NAME-lukwidmer.tex
 % \documentclass[8pt, a4paper, landscape, xcolor=dvipsnames]{extarticle}
 \documentclass[8pt, a4paper, landscape]{extarticle}
 
@@ -81,10 +81,10 @@
 }
 
 %Documentinfo
-\newcommand{\DocumentInfo}[3]{
+\newcommand{\DocumentInfo}[4][brown!37!white]{
 	\begin{tcolorbox}[
 			arc=0mm,
-			colback = brown!38!white,
+			colback = #1,
 			colframe = brown!50!white,
 			boxrule=0pt,
 			toptitle=1mm,
@@ -92,14 +92,14 @@
 			right=2mm,
 			left=2mm,
 			leftright skip = -0.5mm,
-			title= \huge \center \textbf{#1} \par \large \vskip1mm #2 \par \vskip1mm 					\small 	Version: \today,
+			title= \huge \center \textbf{#2} \par \large \vskip1mm #3 \par \vskip1mm 					\small 	Version: \today,
 			colupper=black,
 			coltitle=black,
 			after skip = 0 mm,
 			top=0.1mm,
 			bottom=1mm]
 
-		\small #3
+		\small #4
 		\vskip1mm
 	\end{tcolorbox}
 	\WhiteSpace
